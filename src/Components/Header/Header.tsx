@@ -2,8 +2,8 @@ import css from './Header.module.css'
 
 const Header = () => {
     return (
-        <div>
-            <h3>The MovieDB</h3>
+        <div className={css.Header}>
+            <h3 className={css.MovieDB}>The MovieDB</h3>
             <div>
             <h3>Movies</h3>
             <h3>Genres</h3>
