@@ -68,8 +68,8 @@
     display: grid;
     text-align: center;
     align-items: center;
-    height: 200px;
-    width: 200px;
+    height: 100px;
+    width: 100px;
     border-radius: 50%;
     border: #33b2d5 dashed 2px;
 }

@@ -8,17 +8,18 @@ const reset = () => {};
 
 const Header = () => {
     return (
-        <div className={css.Header}>
+        <div className={css.header}>
             <h3 className={css.MovieDB}>The MovieDB</h3>
-            <div>
-                <NavLink to={'/movies'} onClick={() => reset()}>
-                    Films store
-                </NavLink>
-                <GenreBadge />
-                <h3>Genres</h3>
 
-                <h3>Search</h3>
-            </div>
+            <NavLink to={'/movies'} onClick={() => reset()}>
+                Films store
+            </NavLink>
+            <NavLink to={'/genres'} onClick={() => reset()}>
+                Genres
+            </NavLink>
+            <NavLink to={'/genres'} onClick={() => reset()}>
+                Search
+            </NavLink>
 
             <Switch />
             <UserInfo />

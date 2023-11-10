@@ -1,15 +1,66 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import { GenreBadge } from '../../Components/GenreBadge/';
-import { MoviesListCard } from '../../Components/MoviesListCard';
-
-const movies = [];
+import { movieService } from '../../Services';
+import css from '../../Components/Header/Header.module.css';
+import { MoviesList } from '../../Components/MoviesList/MoviesList';
 
 const MoviesListPage = () => {
+    const [movies, setMovies] = React.useState<any>([]);
+    const [total_pages, setTotalPages] = React.useState<number>(0);
+    const [query, setQuery] = useSearchParams();
+    const [currentPage, setCurrentPage] = React.useState<number>(Number(query.get('page')));
+
+    const nextPage = () => {
+        const nextPage = +query.get('page') + 1;
+        setQuery({ page: `${nextPage}` });
+        setCurrentPage(nextPage);
+    };
+    const prevPage = () => {
+        const prevPage = +query.get('page') - 1;
+        setQuery({ page: `${prevPage}` });
+        setCurrentPage(prevPage);
+    };
+
+    const fetchMovies = async () => {
+        const movies = await movieService.getAllMovies(Number(query.get('page')), false);
+        setMovies(movies.data.results);
+        console.log('movies: ', movies);
+        setTotalPages(movies.data?.total_pages);
+    };
+
+    useEffect(() => {
+        fetchMovies();
+    }, []);
+
+    useEffect(() => {
+        fetchMovies();
+    }, [query]);
+
     return (
         <div>
-            <GenreBadge />
-            <MoviesListCard movies={movies} />
+            <div className={css.buttons}>
+                <button disabled={currentPage <= 1} onClick={prevPage}>
+                    Previous
+                </button>
+                <p>Now you are at the page {currentPage}</p>
+                <button disabled={currentPage >= total_pages} onClick={nextPage}>
+                    Next
+                </button>
+            </div>
+            <div className={css.product_card}>
+                {movies && movies.map(movie => <MoviesList key={movie.id} movie={movie} />)}
+            </div>
+            <div className={css.buttons}>
+                <button disabled={currentPage <= 1} onClick={prevPage}>
+                    Previous
+                </button>
+                <p>Now you are at the page {currentPage}</p>
+                <button disabled={currentPage >= total_pages} onClick={nextPage}>
+                    Next
+                </button>
+            </div>
         </div>
     );
 };
