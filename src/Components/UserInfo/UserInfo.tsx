@@ -1,3 +1,5 @@
+import css from '../Header/Header.module.css';
+
 const UserInfo = () => {
     return (
         <div className={css.round}>
@@ -8,4 +10,4 @@ const UserInfo = () => {
     );
 };
 
-export {UserInfo};
+export { UserInfo };

@@ -1,15 +1,9 @@
 import React from 'react';
 
-import {MovieInfo} from "../../components";
+// import { MovieInfo } from '../../Components/MovieInfo';
 
 const MoviePage = () => {
-
-
-    return (
-        <div>
-            <MovieInfo/>
-        </div>
-    );
+    return <div>{/* <MovieInfo /> */}</div>;
 };
 
-export {MoviePage};
+export { MoviePage };
