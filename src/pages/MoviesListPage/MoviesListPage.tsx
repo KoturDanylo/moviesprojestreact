@@ -1,14 +1,17 @@
 import React from 'react';
 
-import {GenreBadge, MoviesListCard} from "../../components";
+import { GenreBadge } from '../../Components/GenreBadge/';
+import { MoviesListCard } from '../../Components/MoviesListCard';
+
+const movies = [];
 
 const MoviesListPage = () => {
     return (
         <div>
-            <GenreBadge/>
-            <MoviesListCard/>
+            <GenreBadge />
+            <MoviesListCard movies={movies} />
         </div>
     );
 };
 
-export {MoviesListPage};
+export { MoviesListPage };

@@ -1,10 +1,15 @@
+import css from '../Header/Header.module.css';
+
+const register = v => v;
+const handleSubmit =v => v;
+
 const GenreBadge = () => {
     return (
         <div className={css.fixed}>
             <div className={css.inside}>
                 <ul>
                     <p>Choose genre</p>
-                    <form onSubmit={handleSubmit(getGenres)}>
+                    <form onSubmit={handleSubmit('')}>
                         <li><label>Action: <input type="checkbox" {...register('genresArray')} value={28}/></label>
                         </li>
                         <li><label>Adventure: <input type="checkbox" {...register('genresArray')}
