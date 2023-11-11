@@ -1,5 +1,4 @@
 import css from './Header.module.css';
-import { GenreBadge } from '../GenreBadge/GenreBadge';
 import { NavLink } from 'react-router-dom';
 import { Switch } from '../Switch';
 import { UserInfo } from '../UserInfo';
@@ -9,7 +8,7 @@ const reset = () => {};
 const Header = () => {
     return (
         <div className={css.header}>
-            <h3 className={css.MovieDB}>The MovieDB</h3>
+            <h1>The MovieDB</h1>
 
             <NavLink to={'/movies'} onClick={() => reset()}>
                 Films store
@@ -17,11 +16,10 @@ const Header = () => {
             <NavLink to={'/genres'} onClick={() => reset()}>
                 Genres
             </NavLink>
-            <NavLink to={'/genres'} onClick={() => reset()}>
+            <NavLink to={'/search'} onClick={() => reset()}>
                 Search
             </NavLink>
-
-            <Switch />
+            <Switch/>
             <UserInfo />
         </div>
     );

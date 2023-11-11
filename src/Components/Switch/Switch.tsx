@@ -16,10 +16,12 @@ const Switch = () => {
     }
 
     return (
+        <div className={css.toggle_switch}> Dark Theme
         <label className={css.toggle_switch}>
             <input type="checkbox" checked={isToggled} onChange={onToggle} />
             <span className={css.switch} />
         </label>
+        </div>
     );
 }
 

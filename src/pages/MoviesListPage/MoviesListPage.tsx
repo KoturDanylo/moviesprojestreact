@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import { GenreBadge } from '../../Components/GenreBadge/';
 import { movieService } from '../../Services';
 import css from '../../Components/Header/Header.module.css';
-import { MoviesList } from '../../Components/MoviesList/MoviesList';
+import { MoviesList } from '../../Components/MoviesList';
 
 const MoviesListPage = () => {
     const [movies, setMovies] = React.useState<any>([]);

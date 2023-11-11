@@ -1,6 +1,6 @@
 .header {
-    display: grid;
-    justify-content: space-evenly;
+    display: flex;
+    justify-content: space-around;
     grid-template-columns: 1fr 3fr 1fr;
     align-items: center;
     width: 100%;
@@ -42,6 +42,8 @@
     font-size: 18px;
     line-height: 25px;
     transition: 0.3s;
+    display: flex;
+    justify-content: space-around;
 }
 .inside li :hover{
     background-color: #33a516;
@@ -72,6 +74,7 @@
     width: 100px;
     border-radius: 50%;
     border: #33b2d5 dashed 2px;
+    margin-right:0 ;
 }
 
 .round p {
@@ -116,6 +119,7 @@
     bottom: 0;
     left: 0;
     transition: background-color 0.2s ease;
+
 }
 
 .toggle_switch .switch::before {
