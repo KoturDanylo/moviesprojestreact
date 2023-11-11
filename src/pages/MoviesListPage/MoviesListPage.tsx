@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useParams } from 'react-router-dom';
 
 import { GenreBadge } from '../../Components/GenreBadge/';
 import { movieService } from '../../Services';
@@ -10,7 +10,9 @@ const MoviesListPage = () => {
     const [movies, setMovies] = React.useState<any>([]);
     const [total_pages, setTotalPages] = React.useState<number>(0);
     const [query, setQuery] = useSearchParams();
-    const [currentPage, setCurrentPage] = React.useState<number>(Number(query.get('page')));
+    const { genre } = useParams();
+
+    const [currentPage, setCurrentPage] = React.useState<number>(Number(query.get('page') || 0));
 
     const nextPage = () => {
         const nextPage = +query.get('page') + 1;
@@ -24,7 +26,10 @@ const MoviesListPage = () => {
     };
 
     const fetchMovies = async () => {
-        const movies = await movieService.getAllMovies(Number(query.get('page') || 1), false);
+        const movies = await movieService.getAllMovies(
+            Number(query.get('page') || 1),
+            genre || false
+        );
         setMovies(movies.data.results);
         console.log('movies: ', movies);
         setTotalPages(movies.data?.total_pages);
