@@ -1,9 +1,14 @@
 import { StarsRating } from '../Stars';
+import { useNavigate } from 'react-router-dom';
 import css from '../Header/Header.module.css';
 const basePosterUrl = `https://image.tmdb.org/t/p/original`;
 
-const toMovieInfo = v => v;
-const MoviesList = ({ movie: { title, vote_average, release_date, poster_path } }) => {
+const MoviesList = ({ movie: { id, title, vote_average, release_date, poster_path } }) => {
+    const navigate = useNavigate();
+    const toMovieInfo = () => {
+        navigate(`/movie/${id}`, { state: id });
+    };
+
     return (
         <div className={css.item} onClick={toMovieInfo}>
             <img src={`${basePosterUrl}/${poster_path}`} alt={title} />

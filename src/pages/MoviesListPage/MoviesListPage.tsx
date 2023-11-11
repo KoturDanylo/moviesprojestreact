@@ -24,7 +24,7 @@ const MoviesListPage = () => {
     };
 
     const fetchMovies = async () => {
-        const movies = await movieService.getAllMovies(Number(query.get('page')), false);
+        const movies = await movieService.getAllMovies(Number(query.get('page') || 1), false);
         setMovies(movies.data.results);
         console.log('movies: ', movies);
         setTotalPages(movies.data?.total_pages);
