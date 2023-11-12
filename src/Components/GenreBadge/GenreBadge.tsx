@@ -2,7 +2,6 @@ import css from '../Header/Header.module.css';
 
 const register = v => v;
 const handleSubmit = v => v;
-
 const GenreBadge = () => {
     return (
         <div>

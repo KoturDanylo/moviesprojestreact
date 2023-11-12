@@ -8,7 +8,7 @@ const reset = () => {};
 const Header = () => {
     return (
         <div className={css.header}>
-            <h1>The MovieDB</h1>
+            <h1>TheMovieDB</h1>
 
             <NavLink to={'/movies'} onClick={() => reset()}>
                 Films store
