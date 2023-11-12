@@ -62,11 +62,9 @@ const Footer = () => {
                             <p>Порекомендувати айті компанії</p>
                         </li>
                         <li className={css.listed_item}>
-                            <p>Дати гарний фідбек</p>
+                            <p>Залишити відгук</p>
                         </li>
-                        <li className={css.listed_item}>
-                            <p>Порекомендувати цього спеціаліста</p>
-                        </li>
+                        
                     </ul>
                 </div>
                 <div className={css.column}>
