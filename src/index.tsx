@@ -15,6 +15,7 @@ root.render(
             <Route path={'/'} element={<MainLayout />}>
                 <Route index element={<Navigate to={'movies'} />} />
                 <Route path={'movies'} element={<MoviesListPage />} />
+                <Route path={'movies/:genre'} element={<MoviesListPage />} />
                 <Route path={'genres'} element={<GenresPage />} />
                 <Route path={'movie/:id'} element={<MoviePage />} />
                 <Route path={'*'} element={<NotFoundPage />} />

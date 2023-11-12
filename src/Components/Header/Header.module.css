@@ -7,6 +7,14 @@
     height: 200px;
     background-color: honeydew;
 }
+.dark_theme{
+    text-decoration: none;
+    color: #6699cc;
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 25px;
+}
 
 
 .header a {
@@ -255,6 +263,11 @@
     width: 24px;
     height: 24px;
     margin-right: 10px;
+}
+
+.imgdb_class {
+    width: 130px;
+    height: 130px;
 }
 
 .listed_item {
