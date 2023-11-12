@@ -10,10 +10,10 @@ const MoviesListPage = () => {
     const [query, setQuery] = useSearchParams();
     const { genre } = useParams();
 
-    const [currentPage, setCurrentPage] = React.useState<number>(Number(query.get('page') || 0));
+    const [currentPage, setCurrentPage] = React.useState<number>(Number(query.get('page') || 1));
 
     const nextPage = () => {
-        const nextPage = +query.get('page') + 1;
+        const nextPage = +currentPage + 1;
         setQuery({ page: `${nextPage}` });
         setCurrentPage(nextPage);
     };

@@ -157,6 +157,19 @@
     padding: 0 30px;
 }
 
+.search_input {
+    display: block;
+	grid-area: search;
+	-webkit-appearance: none;
+	appearance: none;
+	width: 98%;
+	height: 100px;
+    margin: 30px 0px;
+	background: none;
+	padding-left: 30px;
+	border-radius: 100px;
+}
+
 .product_card .item {
     display: flex;
     flex-direction: column;

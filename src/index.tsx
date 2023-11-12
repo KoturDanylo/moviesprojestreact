@@ -6,6 +6,7 @@ import { MoviesListPage } from './pages/';
 import { MoviePage } from './pages/';
 import { NotFoundPage } from './pages/';
 import GenresPage from './pages/GenresPage/GenresPage';
+import SearchPage from './pages/SearchPage/SearchPage';
 
 const root = createRoot(document.getElementById('root'));
 
@@ -15,6 +16,7 @@ root.render(
             <Route path={'/'} element={<MainLayout />}>
                 <Route index element={<Navigate to={'movies'} />} />
                 <Route path={'movies'} element={<MoviesListPage />} />
+                <Route path={'search'} element={<SearchPage />} />
                 <Route path={'movies/:genre'} element={<MoviesListPage />} />
                 <Route path={'genres'} element={<GenresPage />} />
                 <Route path={'movie/:id'} element={<MoviePage />} />

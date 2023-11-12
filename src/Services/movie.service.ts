@@ -12,6 +12,7 @@ const movieService = {
         axiosService.get(urls.movie, { params: { page, with_genres }, ...config }),
     getGenres: () => axiosService.get(urls.genres, config),
     details: id => axiosService.get(`${urls.details}/${id}`, config),
+    searchMovies: q => axiosService.get(urls.search, { params: { query: q }, ...config }),
 };
 
 export { movieService };
