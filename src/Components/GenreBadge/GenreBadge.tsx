@@ -2,22 +2,15 @@ import { Link } from 'react-router-dom';
 import css from '../Header/Header.module.css';
 
 import { useEffect } from 'react';
-import { movieService } from '../../Services';
 
 const GenreBadge = () => {
     useEffect(() => {
-        const fetchGenres = async () => {
-            const res = await movieService.getGenres();
-
-            console.log(res);
-        };
     }, []);
     return (
         <div>
             <div className={css.inside}>
                 <ul>
                     <h2>Choose genre</h2>
-
 
                     <li>
                         <label>
