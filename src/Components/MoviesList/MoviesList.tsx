@@ -11,7 +11,7 @@ const MoviesList = ({ movie: { id, title, vote_average, release_date, poster_pat
 
     return (
         <div className={css.item} onClick={toMovieInfo}>
-            <img src={`${basePosterUrl}/${poster_path}`} alt={title} />
+            {poster_path && <img src={`${basePosterUrl}/${poster_path}`} alt={title} />}
             <h3>{title}</h3>
             <StarsRating vote_average={vote_average} />
             <p>{release_date}</p>

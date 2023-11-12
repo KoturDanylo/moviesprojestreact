@@ -29,7 +29,6 @@ const MoviesListPage = () => {
             genre || false
         );
         setMovies(movies.data.results);
-        console.log('movies: ', movies);
         setTotalPages(movies.data?.total_pages);
     };
     useEffect(() => {

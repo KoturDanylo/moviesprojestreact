@@ -52,7 +52,7 @@ const MovieInfo = () => {
     return (
         <div className={css.bigger_container}>
             <div className={css.product_card_details}>
-                <img src={_url} alt={title} />
+                {movieDetails.poster_path && <img src={_url} alt={title} />}
 
                 <div>
                     <h2>{title}</h2>
@@ -88,7 +88,7 @@ const MovieInfo = () => {
             <div className={css.image}>
                 <StarsRating vote_average={vote_average} />{' '}
                 <a href={imdbURL}>
-                    <img src={imdbImage} alt="imdb logo" />
+                    {movieDetails?.poster_path && <img src={imdbImage} alt="imdb logo" />}
                 </a>
             </div>
         </div>
