@@ -1,42 +1,35 @@
 import React, { useEffect } from 'react';
 import { useSearchParams, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-import { movieService } from '../../Services';
+import { RootState, movieActions, useAppDispatch } from '../../redux';
 import css from '../../Components/Header/Header.module.css';
 import { MoviesList } from '../../Components/MoviesList';
 const MoviesListPage = () => {
-    const [movies, setMovies] = React.useState<any>([]);
-    const [total_pages, setTotalPages] = React.useState<number>(0);
-    const [query, setQuery] = useSearchParams();
     const { genre } = useParams();
 
-    const [currentPage, setCurrentPage] = React.useState<number>(Number(query.get('page') || 1));
+    const { movies, currentPage, total_pages } = useSelector((state: RootState) => state.movies);
+    const [query, setQuery] = useSearchParams({ page: '1' });
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(
+            movieActions.getAll({
+                page: query.get('page'),
+                with_genres: genre,
+            })
+        );
+    }, [query]);
 
     const nextPage = () => {
         const nextPage = +currentPage + 1;
         setQuery({ page: `${nextPage}` });
-        setCurrentPage(nextPage);
     };
     const prevPage = () => {
         const prevPage = +query.get('page') - 1;
         setQuery({ page: `${prevPage}` });
-        setCurrentPage(prevPage);
     };
 
-    const fetchMovies = async () => {
-        const movies = await movieService.getAllMovies(
-            Number(query.get('page') || 1),
-            genre || false
-        );
-        setMovies(movies.data.results);
-        setTotalPages(movies.data?.total_pages);
-    };
-    useEffect(() => {
-        fetchMovies();
-    }, []);
-    useEffect(() => {
-        fetchMovies();
-    }, [query]);
     return (
         <div>
             <div className={css.buttons}>

@@ -8,7 +8,7 @@ const config = {
 };
 
 const movieService = {
-    getAllMovies: (page = 1, with_genres) =>
+    getAllMovies: (page = '1', with_genres) =>
         axiosService.get(urls.movie, { params: { page, with_genres }, ...config }),
     getGenres: () => axiosService.get(urls.genres, config),
     details: id => axiosService.get(`${urls.details}/${id}`, config),
