@@ -1,27 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import { MoviesList } from '../../Components/MoviesList/MoviesList';
 import css from '../../Components/Header/Header.module.css';
 import { movieService } from '../../Services';
+import { RootState, movieActions, useAppDispatch } from '../../redux';
 
 const SearchPage = () => {
-    const [search, setSearch] = useState<string>('');
-    const [movies, setMovies] = useState<any>([]);
+    const { movies } = useSelector((state: RootState) => state.movies);
+
+    const dispatch = useAppDispatch();
 
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSearch(event.target.value);
+        dispatch(movieActions.getMoviesSearch({ query: event.target.value }));
     };
-
-    useEffect(() => {
-        const searchMovies = async () => {
-            const res = await movieService.searchMovies(search);
-
-            setMovies(res.data.results);
-        };
-
-        searchMovies();
-    }, [search]);
 
     return (
         <div>

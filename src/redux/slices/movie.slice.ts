@@ -25,6 +25,14 @@ const getAll = createAsyncThunk(
     }
 );
 
+const getMoviesSearch = createAsyncThunk(
+    'moviesSlice/searchMovies',
+    async ({ query }: { query: string }) => {
+        const { data } = await movieService.searchMovies(query);
+        return data;
+    }
+);
+
 const getGenres = createAsyncThunk('moviesSlice/getGenres', async () => {
     const { data } = await movieService.getGenres();
     return data;
@@ -37,6 +45,12 @@ const movieSlice = createSlice({
     extraReducers: builder => {
         builder
             .addCase(getAll.fulfilled, (state, action) => {
+                const { page, results } = action.payload;
+                state.currentPage = page;
+                state.movies = results;
+                state.total_pages = action.payload.total_pages;
+            })
+            .addCase(getMoviesSearch.fulfilled, (state, action) => {
                 const { page, results } = action.payload;
                 state.currentPage = page;
                 state.movies = results;
@@ -61,6 +75,7 @@ const movieActions = {
     getAll,
     getDetails,
     getGenres,
+    getMoviesSearch,
 };
 
 export { movieReducer, movieActions };
